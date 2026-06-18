@@ -53,3 +53,14 @@ def test_procesar_sucursal_acumula_mismo_producto():
     resumen, indice_final = procesar_sucursal(filas, 0)
     assert resumen["unidades"] == 7
     assert indice_final == 2
+
+    
+
+def test_ordenar_burbuja_ya_ordenado():
+    entrada = [
+        ["001", "Pan", "", "", "2", "10"],
+        ["002", "Leche", "", "", "1", "20"],
+    ]
+    resultado = ordenar_burbuja(entrada)
+    sucursales = [fila[0] for fila in resultado]
+    assert sucursales == ["001", "002"]
