@@ -53,3 +53,13 @@ def test_procesar_sucursal_acumula_mismo_producto():
     resumen, indice_final = procesar_sucursal(filas, 0)
     assert resumen["unidades"] == 7
     assert indice_final == 2
+
+
+def test_error_intencional():
+    # Este test falla a proposito para demostrar el bloqueo de la pipeline
+    resultado = ordenar_burbuja([["002", "Pan", "", "", "1", "10"],
+                                 ["001", "Leche", "", "", "1", "20"]])
+    sucursales = [fila[0] for fila in resultado]
+    # La burbuja ordena a ["001", "002"], pero afirmamos lo contrario:
+    assert sucursales == ["002", "001"]
+
